@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -10,9 +11,9 @@ class PostController extends Controller
     {
         return view('posts.index');
     }
-    public function store()
+    public function store(Request $request)
     {
-        //guardar
+        return $request->all();
     }
     public function destroy()
     {
