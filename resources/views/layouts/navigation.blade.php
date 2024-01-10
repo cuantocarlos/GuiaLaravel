@@ -15,9 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
-                        {{ __('Posts') }}
-                    </x-nav-link>
+                    
                 </div>
             </div>
 
@@ -87,9 +85,7 @@
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link :href="route('posts.index')"><!--mio-->
-                        {{ __('Posts') }}
-                    </x-responsive-nav-link>
+              
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
