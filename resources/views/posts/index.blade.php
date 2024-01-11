@@ -10,10 +10,15 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
+
+                <x-auth-session-status class="mb-4" :status="session('status')" />
+
                     <form action="{{ route('posts.store')}}" method="POST">
-                    @csrf
+                        @csrf
+
                         <div class="mt-4">
                             <x-input-label for="body" :value="__('Body')" />
+
                             <x-textarea class="block mt-1 w-full" name="body" required/>
                         </div>
 
@@ -22,6 +27,7 @@
                                 {{ __('Guardar') }}
                             </x-primary-button>
                         </div>
+
                     </form>
                 </div>
             </div>
