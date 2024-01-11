@@ -14,6 +14,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate(['body' => 'required']);
+        //dd(['body' => $request->body]);
         $request->user()->posts()->create($request->only('body'));
         return back()->with('status', 'Post guardado con éxito');
     }

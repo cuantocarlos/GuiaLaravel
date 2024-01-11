@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
 
-                <x-auth-session-status class="mb-4" :status="session('status')" />
+                <x-session-status class="mb-4" :status="session('status')" />
 
                     <form action="{{ route('posts.store')}}" method="POST">
                         @csrf
