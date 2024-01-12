@@ -13,6 +13,8 @@ class Post extends Model
         'body'
     ];
 
+    protected $with = ['user']; //mio
+
     public function user() //mio
     {
         return $this->belongsTo(User::class);
