@@ -10,7 +10,7 @@ class PostController extends Controller
     //mios
     public function index()
     {
-        return view('posts.index',['posts' => Post::latest()->paginate()]);
+        return view('posts.index', ['posts' => Post::latest()->paginate()]);
     }
     public function store(Request $request)
     {
@@ -19,8 +19,10 @@ class PostController extends Controller
         $request->user()->posts()->create($request->only('body'));
         return back()->with('status', 'Post guardado con éxito');
     }
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
+        //dd($request->user()->id);
+        $this->authorize('destroy-post', $post);
         $post->delete();
         return back()->with('status', 'Post eliminado con éxito');
     }

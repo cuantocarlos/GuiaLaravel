@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
+use APP\Models\User;
+use APP\Models\Post;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,6 +24,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->registerPolicies();
+
+        Gate::define('destroy-post', function (User $user, Post $post) {
+            return $user->id === $post->user_id;
+        });
     }
 }

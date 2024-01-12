@@ -5,9 +5,11 @@
         </em>
         {{ $post->body }}
     </p>
-
-<form action="{{ route('posts.destroy',$post->id)}}" method="POST">
-    @csrf
-    @method('DELETE')
-    <button class="text-indigo-600 text-xs">{{__('Delete')}}</button>
-</form>
+    <!--solo al autor le aparece el boton de borrar-->
+    @can('destroy-post', $post)
+        <form action="{{ route('posts.destroy',$post->id)}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="text-indigo-600 text-xs">{{__('Delete')}}</button>
+        </form>
+    @endcan
