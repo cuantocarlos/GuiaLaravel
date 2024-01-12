@@ -19,8 +19,9 @@ class PostController extends Controller
         $request->user()->posts()->create($request->only('body'));
         return back()->with('status', 'Post guardado con éxito');
     }
-    public function destroy()
+    public function destroy(Post $post)
     {
-        //eliminar
+        $post->delete();
+        return back()->with('status', 'Post eliminado con éxito');
     }
 }
