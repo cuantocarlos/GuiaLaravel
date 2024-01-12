@@ -22,8 +22,10 @@ class PostController extends Controller
     public function destroy(Request $request, Post $post)
     {
         //dd($request->user()->id);
-        $this->authorize('destroy-post', $post);
+        $this->authorize('delete', $post);
+
         $post->delete();
+        
         return back()->with('status', 'Post eliminado con éxito');
     }
 }

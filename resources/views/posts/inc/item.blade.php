@@ -6,7 +6,7 @@
         {{ $post->body }}
     </p>
     <!--solo al autor le aparece el boton de borrar-->
-    @can('destroy-post', $post)
+    @can('delete', $post)
         <form action="{{ route('posts.destroy',$post->id)}}" method="POST">
             @csrf
             @method('DELETE')
